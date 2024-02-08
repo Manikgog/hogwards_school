@@ -51,4 +51,9 @@ public class FacultyController {
         }
         return ResponseEntity.ok(deletedFaculty);
     }
+
+    @GetMapping("/color/{color}")
+    public ResponseEntity<List<Faculty>> getFacultiesByColor(@PathVariable String color){
+        return ResponseEntity.ok(facultyService.getFacultyByColor(color));
+    }
 }

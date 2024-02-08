@@ -11,6 +11,7 @@ public class FacultyService {
     Map<Long, Faculty> faculties = new HashMap<>();
     private static Long countId = 1L;
     public Faculty createFaculty(Faculty faculty){
+        faculty.setId(countId);
         faculties.put(countId, faculty);
         countId++;
         return faculty;
@@ -31,15 +32,13 @@ public class FacultyService {
 
     public Faculty getFaculty(Faculty faculty){
         if(faculties.containsKey(faculty.getId())){
-            Faculty foundFaculty = faculties.get(faculty.getId());
-            return foundFaculty;
+            return  faculties.get(faculty.getId());
         }
         return null;
     }
     public Faculty getFacultyById(Long facultyId){
         if(faculties.containsKey(facultyId)){
-            Faculty foundFaculty = faculties.get(facultyId);
-            return foundFaculty;
+            return faculties.get(facultyId);
         }
         return null;
     }
@@ -47,5 +46,12 @@ public class FacultyService {
 
     public List<Faculty> getAll(){
         return faculties.values().stream().toList();
+    }
+    public List<Faculty> getFacultyByColor(String color){
+        return faculties
+                .values()
+                .stream()
+                .filter(faculty -> faculty.getColor().equals(color))
+                .toList();
     }
 }

@@ -52,4 +52,9 @@ public class StudentController {
         }
         return ResponseEntity.ok(deletedStudent);
     }
+
+    @GetMapping("/age/{age}")
+    public ResponseEntity<List<Student>> getStudentsByAge(@PathVariable Integer age){
+        return ResponseEntity.ok(studentService.getStudentsByAge(age));
+    }
 }
