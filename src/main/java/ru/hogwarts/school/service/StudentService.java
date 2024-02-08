@@ -41,4 +41,12 @@ public class StudentService {
         return students.values().stream().toList();
     }
 
+    public List<Student> getStudentsByAge(int age){
+        return students
+                .values()
+                .stream()
+                .filter(student -> student.getAge() == age)
+                .toList();
+    }
+
 }
